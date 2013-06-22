@@ -22,8 +22,8 @@ else
 fi
 
 #start a guest
-#qemu-kvm -m 1024 -soundhw all -boot c -drive file=xpguest.img -net nic,model=virtio -cpu host -net tap,ifname=$1 -localtime
-qemu-system-x86_64 -m 1024 -enable-kvm -soundhw all -boot c -drive file=win7guest.img -net nic -net tap,ifname=$1 -localtime -usbdevice tablet #-spice port=5930 -vga qxl
+qemu-system-x86_64 -m 2048 -enable-kvm -soundhw all -usb -boot c -drive file=/home/usr1/Downloads/win7guest.img -net nic -net tap,ifname=$1 -localtime -usbdevice tablet -spice port=5930,disable-ticketing -vga qxl -vnc :3
+
 
 #pull out tap device form bridge
 sudo brctl delif br0 $1
