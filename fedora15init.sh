@@ -9,7 +9,7 @@ if [ $kernel = "2.6.43.8-1.fc15.x86_64" ];then
 else
 	echo "check your kernel version"
 fi
-
+exit 1
 
 ###################network for qemu#########################
 
