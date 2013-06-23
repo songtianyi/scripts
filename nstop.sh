@@ -12,7 +12,9 @@ sudo brctl delif br0 p3p1
 sudo brctl delbr br0
 
 #start network interface,configuration file in /etc/sysconfig/network-scripts/ifcfg-
-sudo ifup p3p1
+#sudo ifup p3p1
+
+ifconfig p3p1 up
 
 echo "test local network.........."
 #test network

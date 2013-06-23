@@ -14,7 +14,14 @@ exit 1
 ########################system##################
 
 #update
+sudo yum -y install yum-fastestmirror
 sudo yum -y update
+
+#install dstat
+sudo yum -y install dstat
+
+#install vim
+sudo yum -y install vim
 
 #install adobe flash
 
@@ -26,7 +33,7 @@ sudo yum -y install abiword
 #network config tools
 sudo yum -y install bridge-utils
 sudo yum -y install tunctl
-
+sudo modprobe tun
 
 #install git tool
 sudo yum -y install git
@@ -40,9 +47,14 @@ sudo yum -y install vnc
 
 
 ###################KVM##########################
+
+#load kvm module,always needed afther you restart your system
 sudo modprobe kvm
 sudo modprobe kvm_intel
 
+#install libvirt and virt tools
+sudo yum -y install libvirt libvirt-devel
+sudo yum -y install virt-top
 ###################qemu#########################
 
 #when you meet Failed to open /dev/dsp oss: No such file or Directory problem

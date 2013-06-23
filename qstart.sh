@@ -21,8 +21,10 @@ else
     exit 1
 fi
 
-#start a guest
-qemu-system-x86_64 -m 2048 -enable-kvm -soundhw all -usb -boot c -drive file=/home/usr1/Downloads/win7guest.img -net nic -net tap,ifname=$1 -localtime -usbdevice tablet -spice port=5930,disable-ticketing -vga qxl -vnc :3
+#start a guest,note that vnc start from 5900
+set -x
+qemu-system-x86_64 -m 2048 -enable-kvm -cpu host -smp 2 -soundhw all -boot c -drive file=/home/usr1/Downloads/win7guest.img -net nic,model=virtio -net tap,ifname=$1 -localtime -usbdevice tablet -usb -spice port=5930,disable-ticketing -vga qxl -vnc :0 -monitor stdout
+set +x
 
 
 #pull out tap device form bridge

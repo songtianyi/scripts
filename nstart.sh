@@ -7,7 +7,7 @@ sudo ifconfig p3p1 0.0.0.0 up promisc
 #add a bridge
 sudo brctl addbr br0
 
-#bind the interface to the bridge
+#bind interface with the bridge
 sudo brctl addif br0 p3p1
 
 #set STP on
@@ -19,7 +19,7 @@ sudo ifconfig br0 192.168.1.210 netmask 255.255.255.0 up
 #config route
 sudo route add default gw 192.168.1.1
 
-echo "test local network........."
+echo "test local network 10sec later........."
 sleep 10s
 
 #test local network
