@@ -28,14 +28,15 @@ sudo yum -y install git
 sudo yum -y install httpd
 sudo yum -y install telnet
 
-#load some kernel modules
-sudo modprobe tun
-
 #install chromium
 #install adobe flash
 
 #install gcc compiler
 sudo yum -y install gcc gcc-c++
+
+############for spice,kvm or qemu###############
+sudo modprobe tun
+sudo modprobe vhost-net
 
 
 ##################spice#########################
@@ -68,7 +69,7 @@ sudo yum -y install vnc
 #when you meet Failed to open /dev/dsp oss: No such file or Directory problem
 sudo modprobe snd_pcm_oss
 
-
+################################################
 
 
 
