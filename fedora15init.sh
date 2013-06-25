@@ -37,8 +37,8 @@ sudo yum -y install gcc gcc-c++
 ############for spice,kvm or qemu###############
 sudo modprobe tun
 sudo modprobe vhost-net
-
-
+sudo modprobe virtio_net
+sudo modprobe virtio_blk
 ##################spice#########################
 
 sudo yum -y install glib2-devel
@@ -69,6 +69,11 @@ sudo yum -y install vnc
 #when you meet Failed to open /dev/dsp oss: No such file or Directory problem
 sudo modprobe snd_pcm_oss
 
+
+#install libaio-devel to enable linux-AIO
+sudo yum -y install libaio-devel libaio
+#install SDL-devel to enable SDL
+sudo yum -y install SDL-devel
 ################################################
 
 

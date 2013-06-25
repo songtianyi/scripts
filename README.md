@@ -1,6 +1,6 @@
 this repo offers you convenience to do your manual work elegantly
 
-#*catlog*
+#*Catlog*
 + **fedora15init.sh** it is uesful when you reinstall your fedora system
 + **qstart.sh** start a guest with qemu and create a tap device
 + **nstart.sh** config your host network and create a bridge device
