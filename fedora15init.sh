@@ -49,7 +49,7 @@ sudo yum -y install alsa-lib-devel
 sudo yum -y install openssl-devel
 sudo yum -y install libcacard libcacard-devel 
 sudo yum -y install cairo-devel cairo
-
+sudo yum -y install cyrus-sasl-devel
 
 #if you wanna enable gui,cegui is needed
 #when you compile cegui, freetype2 and libpcre must be installed
