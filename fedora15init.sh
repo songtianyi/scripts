@@ -17,6 +17,7 @@ exit 1
 sudo yum -y install yum-fastestmirror
 sudo yum -y update
 
+
 #install some useful tools
 sudo yum -y install dstat
 sudo yum -y install vim
@@ -29,6 +30,8 @@ sudo yum -y install git
 sudo yum -y install httpd
 sudo yum -y install telnet
 sudo yum -y install davfs2
+sudo yum -y install make
+sudo yum -y install emacs
 
 #install chromium
 #install adobe flash
@@ -36,6 +39,10 @@ sudo yum -y install davfs2
 #install gcc compiler
 sudo yum -y install gcc gcc-c++
 
+#install sohu repo
+sudo wget http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm
+sudo yum --enablerepo=epel -y install iksemel iksemel-devel
+sudo rm -f epel-release-6-8.noarch.rpm
 
 ##################spice#########################
 
@@ -50,6 +57,7 @@ sudo yum -y install openssl-devel
 sudo yum -y install libcacard libcacard-devel 
 sudo yum -y install cairo-devel cairo
 sudo yum -y install cyrus-sasl-devel
+sudo yum -y install libjpeg-turbo-devel
 
 #if you wanna enable gui,cegui is needed
 #when you compile cegui, freetype2 and libpcre must be installed
