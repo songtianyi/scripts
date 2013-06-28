@@ -23,8 +23,9 @@ fi
 
 #start a guest,note that vnc start from 5900
 set -x
-qemu-system-x86_64 -monitor stdio -enable-kvm -m 2048 -cpu host -smp 2 -soundhw all -boot c -drive file=/home/usr1/Downloads/xpguest.img -net nic -net tap,ifname=$1,vhost=on,vhostforce=on,vnet_hdr=on -localtime -balloon virtio -usb -usbdevice tablet -vnc :0 -cdrom /home/usr1/Downloads/virtio-win-0.1-59.iso -sdl
-#qemu-system-x86_64 -monitor stdio -enable-kvm -m 2048 -cpu host -smp 2 -soundhw all -boot c -drive file=/home/usr1/Downloads/win7guest.img -net nic,model=virtio -net tap,ifname=$1,vhost=on,vhostforce=on,vnet_hdr=on -localtime -balloon virtio -usb -usbdevice tablet -spice port=5930,image-compression=quic,jpeg-wan-compression=auto,zlib-glz-wan-compression=auto,streaming-video=all,disable-ticketing -vga qxl -vnc :0 -cdrom /home/usr1/Downloads/virtio-win-0.1-59.iso -sdl
+#qemu-system-x86_64 -monitor stdio -enable-kvm -m 2048 -cpu host -smp 2 -soundhw all -boot c -drive file=/home/usr1/Downloads/xpguest.img -net nic,model=rtl8139 -net tap,ifname=$1 -localtime -usb -usbdevice tablet -vnc :0 -cdrom /home/usr1/Downloads/virtio-win-0.1-59.iso -spice port=5930,disable-ticketing
+
+qemu-system-x86_64 -monitor stdio -enable-kvm -m 2048 -cpu host -smp 2 -soundhw all -boot c -drive file=/home/usr1/Downloads/win7guest.img -net nic,model=virtio -net tap,ifname=$1,vhost=on,vhostforce=on,vnet_hdr=on -localtime -balloon virtio -usb -usbdevice tablet -spice port=5930,image-compression=quic,jpeg-wan-compression=auto,zlib-glz-wan-compression=auto,streaming-video=all,agent-mouse=on,playback-compression=on,disable-ticketing -vga qxl -vnc :0 -cdrom /home/usr1/Downloads/virtio-win-0.1-59.iso
 # -device virtio-blk-pci,x-data-plane=on
 set +x
 
