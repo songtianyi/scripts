@@ -27,6 +27,7 @@ sudo yum -y install telnet
 sudo yum -y install davfs2
 sudo yum -y install emacs
 sudo yum -y install git
+sudo yum -y install svn
 #install chromium
 #install adobe flash
 #install sohu repo
