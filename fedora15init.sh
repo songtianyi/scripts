@@ -35,7 +35,7 @@ sudo yum -y install svn
 #install adobe flash
 #install sohu repo
 sudo wget http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm
-sudo yum -y epel-release-6-8.noarch.rpm
+sudo yum -y install epel-release-6-8.noarch.rpm
 sudo rm  -f epel-release-6-8.noarch.rpm
 
 
