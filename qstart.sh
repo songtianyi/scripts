@@ -25,40 +25,26 @@ else
 fi
 
 set -x
-#install guest
-#qemu-system-x86_64 -enable-kvm -localtime -usb\
-#    -m 2048\
-#    -cpu host\
-#    -smp 2\
-#    -soundhw all\
-#    -boot c\
-#    -drive file=/home/usr1/Downloads/ubuntu-server-guest.img,if=virtioi\
-#    -net nic,model=virtio\
-#    -net tap,ifname=$1\
-#    -usbdevice tablet\
-#    -vnc :0\
-#    -cdrom /home/usr1/Downloads/ubuntu-10.10-server-i386.iso\
-#    -spice port=5930,disable-ticketing
 
 #start a guest,note that vnc start from 5900
 qemu-system-x86_64 -enable-kvm -localtime -usb\
     -monitor stdio\
     -m 2048\
-    -cpu host
+    -cpu host\
     -smp 2\
     -soundhw all\
     -boot d\
-    -drive file=/home/usr1/Downloads/win7guest.img,if=virtio\
+    -drive file=/home/usr1/Downloads/win7guest.img,if=virtio,id=drive0,aio=native,cache=none,format=raw\
     -net nic,model=virtio\
     -net tap,ifname=$1,vhost=on,vhostforce=on,vnet_hdr=on\
     -balloon virtio\
-    -usbdevice tablet\
-    -usbdevice usb-redir
+    -usbdevice tablet \
     -spice port=$2,image-compression=quic,jpeg-wan-compression=auto,zlib-glz-wan-compression=auto,streaming-video=all,disable-ticketing\
     -vga qxl\
     -vnc :$3\
-    -cdrom /home/usr1/Downloads/virtio-win-0.1-59.iso
-#    -device virtio-blk-pci,x-data-plane=on
+    -cdrom /home/usr1/Downloads/virtio-win-0.1-59.iso\
+    -device virtio-blk-pci,x-data-plane=on,drive=drive0,scsi=off,config-wce=off\
+    -device usb-ehci
 set +x
 
 
