@@ -34,17 +34,17 @@ qemu-system-x86_64 -enable-kvm -localtime -usb\
     -smp 2\
     -soundhw all\
     -boot d\
-    -drive file=/home/usr1/Downloads/win7guest.img,if=virtio,id=drive0,aio=native,cache=none,format=raw\
+    -drive file=/home/usr1/Downloads/win7guest.img,if=virtio\
     -net nic,model=virtio\
-    -net tap,ifname=$1,vhost=on,vhostforce=on,vnet_hdr=on\
+    -net tap,ifname=$1,vhost=on,vhostforce=on,vnet_hdr=on,script=no,downscript=no\
     -balloon virtio\
     -usbdevice tablet \
-    -spice port=$2,image-compression=quic,jpeg-wan-compression=auto,zlib-glz-wan-compression=auto,streaming-video=all,disable-ticketing\
+    -spice port=$2,image-compression=quic,jpeg-wan-compression=auto,zlib-glz-wan-compression=auto,streaming-video=all,playback-compression,disable-ticketing\
     -vga qxl\
     -vnc :$3\
     -cdrom /home/usr1/Downloads/virtio-win-0.1-59.iso\
-    -device virtio-blk-pci,x-data-plane=on,drive=drive0,scsi=off,config-wce=off\
     -device usb-ehci
+#    -device virtio-blk-pci,x-data-plane=on,drive=drive0,scsi=off,config-wce=off\
 set +x
 
 
