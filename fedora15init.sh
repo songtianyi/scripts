@@ -1,6 +1,8 @@
 #!/bin/sh
 #kernel version 2.6.38.6-26.rc1.fc15.x86_64
 #author songtianyi630@163.com
+#date 2013-06-30
+
 
 #check kernel version
 kernel=$(uname -r)
@@ -22,6 +24,7 @@ sudo yum -y update
 sudo yum -y install abiword
 sudo yum -y install dia
 #some useful tools
+sudo yum -y install yum-fastestmirror
 sudo yum -y install httpd
 sudo yum -y install telnet
 sudo yum -y install davfs2
@@ -32,8 +35,8 @@ sudo yum -y install svn
 #install adobe flash
 #install sohu repo
 sudo wget http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm
-sudo yum --enablerepo=epel -y install iksemel iksemel-devel
-sudo rm -f epel-release-6-8.noarch.rpm
+sudo yum -y epel-release-6-8.noarch.rpm
+sudo rm  -f epel-release-6-8.noarch.rpm
 
 
 
@@ -46,7 +49,6 @@ sudo yum -y install wget
 sudo yum -y install bridge-utils
 sudo yum -y install tunctl
 #essential tools
-sudo yum -y install yum-fastestmirror
 sudo yum -y install vim
 sudo yum -y install make
 sudo yum -y install gcc gcc-c++
@@ -89,6 +91,7 @@ sudo yum -y install SDL-devel
 
 
 ############for spice,kvm or qemu###############
+
 #load some module,always needed afther you restart your system
 sudo modprobe tun
 sudo modprobe vhost-net
@@ -98,9 +101,14 @@ sudo modprobe kvm
 sudo modprobe kvm_intel
 #when you meet Failed to open /dev/dsp oss: No such file or Directory problem
 sudo modprobe snd_pcm_oss
+
+
+
+
+###################libvirt######################
+
 #install libvirt and virt tools
 sudo yum -y install libvirt libvirt-devel
 sudo yum -y install virt-top
 
-################################################
 
