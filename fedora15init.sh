@@ -33,10 +33,6 @@ sudo yum -y install git
 sudo yum -y install svn
 #install chromium
 #install adobe flash
-#install sohu repo
-sudo wget http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm
-sudo yum -y install epel-release-6-8.noarch.rpm
-sudo rm  -f epel-release-6-8.noarch.rpm
 
 
 
@@ -63,6 +59,10 @@ sudo yum -y install zlib-devel
 sudo yum -y install pixman-devel
 sudo yum -y install autoconf
 sudo yum -y install celt051-devel
+#install sohu repo
+sudo wget http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm
+sudo yum -y install epel-release-6-8.noarch.rpm
+sudo rm  -f epel-release-6-8.noarch.rpm
 sudo yum -y install pyparsing
 sudo yum -y install alsa-lib-devel
 sudo yum -y install openssl-devel
