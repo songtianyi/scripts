@@ -105,10 +105,5 @@ sudo modprobe snd_pcm_oss
 
 
 
-###################libvirt######################
-
-#install libvirt and virt tools
-sudo yum -y install libvirt libvirt-devel
-sudo yum -y install virt-top
-
+###############################################
 
