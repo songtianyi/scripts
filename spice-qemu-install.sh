@@ -5,12 +5,8 @@
 ######################essential tools#############
 
 #network tools 
-sudo yum -y install dstat
 sudo yum -y install wget
-sudo yum -y install bridge-utils
-sudo yum -y install tunctl
 #essential tools
-sudo yum -y install vim
 sudo yum -y install make
 sudo yum -y install gcc gcc-c++
 
@@ -37,8 +33,8 @@ sudo yum -y install cyrus-sasl-devel
 sudo yum -y install libjpeg-turbo-devel
 #if you wanna enable gui,cegui is needed
 #when you compile cegui, freetype2 and libpcre must be installed
-sudo yum install -y freetype-devel
-sudo yum install -y pcre-devel
+sudo yum -y install freetype-devel
+sudo yum -y install pcre-devel
 
 
 
@@ -55,109 +51,108 @@ sudo yum -y install SDL-devel
 
 
 
-############for spice,kvm or qemu###############
+#load modules
+sudo sh load-kvm-spice-qemu-modules.sh
 
-#load some module,always needed afther you restart your system
-sudo modprobe tun
-sudo modprobe vhost-net
-sudo modprobe virtio_net
-sudo modprobe virtio_blk
-sudo modprobe kvm
-sudo modprobe kvm_intel
-#when you meet Failed to open /dev/dsp oss: No such file or Directory problem
-sudo modprobe snd_pcm_oss
+#############Download and extract files########
 
+#specify usblib,usbredir,spice.spice-protocol,qemu package name
+SBLIB="libusb-1.0.9.tar.bz2"
+SBREDIR="usbredir-0.6.tar.bz2"
+PICE="spice-0.12.3.tar.bz2"
+PICEPRO="spice-protocol-0.12.6.tar.bz2"
+EMU="qemu-1.4.2.tar.bz2"
+#specify package url path
+SBLIBPATH="http://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.9/libusb-1.0.9.tar.bz2"
+SBREDIRPATH="http://spice-space.org/download/usbredir/usbredir-0.6.tar.bz2"
+PICEPATH="http://spice-space.org/download/releases/spice-0.12.3.tar.bz2"
+PICEPROPATH="http://spice-space.org/download/releases/spice-protocol-0.12.6.tar.bz2"
+EMUPATH="http://wiki.qemu-project.org/download/qemu-1.4.2.tar.bz2"
 
-
-
-##############Download and extract files########
-
-#usblib
-USBLIB="libusb-1.0.9.tar.bz2"
 if [ -f $USBLIB ]; then
 	echo $USBLIB exists
 else
-	sudo wget http://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.9/libusb-1.0.9.tar.bz2
+	sudo wget $USBLIBPATH 
 fi
-#usbredir
-USBREDIR="usbredir-0.6.tar.bz2"
 if [ -f $USBREDIR ]; then
 	echo $USBREDIR exists
 else
-	sudo wget http://spice-space.org/download/usbredir/usbredir-0.6.tar.bz2
+	sudo wget $USBREDIR 
 fi
-#spice
-SPICE="spice-0.12.3.tar.bz2"
-SPICEPRO="spice-protocol-0.12.6.tar.bz2" 
 if [ -f $SPICE ]; then
 	echo $SPICE exists
 else
-	sudo wget http://spice-space.org/download/releases/spice-0.12.3.tar.bz2
+	sudo wget $SPICE 
 fi
 if [ -f $SPICEPRO ]; then
 	echo $SPICEPRO exists 
 else
-	sudo wget http://spice-space.org/download/releases/spice-protocol-0.12.6.tar.bz2
+	sudo wget $SPICEPRO 
 fi
-#qemu
-QEMU="qemu-1.4.2.tar.bz2"
 if [ -f $QEMU ]; then
 	echo $QEMU exists
 else
-	sudo wget http://wiki.qemu-project.org/download/qemu-1.4.2.tar.bz2
+	sudo wget $QEMU 
 fi
-#extract
-sudo tar -xf libusb-1.0.9.tar.bz2
-sudo tar -xf usbredir-0.6.tar.bz2
-sudo tar -xf spice-0.12.3.tar.bz2
-sudo tar -xf spice-protocol-0.12.6.tar.bz2
-sudo tar -xf qemu-1.4.2.tar.bz2
+extract
+sudo tar -xf $USBLIB 
+sudo tar -xf $USBREDIR 
+sudo tar -xf $SPICE 
+sudo tar -xf $SPICEPRO 
+sudo tar -xf $QEMU 
+sudo rm -f $USBLIB $USBREDIR $SPICEPRO $SPICE $QEMU
 
 
 
 
 ##################install#######################
+
 sudo pwd
 #install libusb
-cd libusb-1.0.9
+cd $USBLIB
 sudo pwd
 sudo ./configure > /dev/null 
 sudo make > /dev/null 
 sudo make install > /dev/null 
-cd .. 
+cd ..
+sudo rm -rf $USBLIB
 sudo cp /usr/local/lib/pkgconfig/libusb-1.0.pc /usr/lib64/pkgconfig/
 #install usbredir
-cd usbredir-0.6
+cd $USBREDIR 
 sudo pwd
 sudo ./configure > /dev/null 
 sudo make > /dev/null 
 make install > /dev/null 
 cd ..
+sudo rm -rf $USBREDIR
 #install spice protocol
-cd spice-protocol-0.12.6
+cd $SPICEPRO
 sudo pwd
 sudo ./configure > /dev/null 
 sudo make  > /dev/null 
 make install > /dev/null 
 cd ..
+sudo rm -rf $SPICEPRO
 #install spice
-cd spice-0.12.3
+cd $SPICE
 sudo pwd
 sudo ./configure --enable-smartcard --enable-client --enable-opengl > /dev/null  
 sudo make > /dev/null  
 sudo make install > /dev/null  
 cd ..
-install qemu
+sudo rm -rf $SPICE
+#install qemu
 sudo cp /usr/local/lib/pkgconfig/spice-server.pc /usr/lib64/pkgconfig/
 sudo cp /usr/local/share/pkgconfig/spice-protocol.pc /usr/lib64/pkgconfig/
 sudo cp /usr/local/lib/pkgconfig/libusbredir* /usr/lib64/pkgconfig/
-cd qemu-1.4.2
+cd $QEMU
 sudo ./configure --enable-spice --enable-linux-aio --enable-virtio-blk-data-plane --enable-sdl --enable-usb-redir | grep yes
-echo "making...."
+echo "compiling qemu...."
 sudo make > /dev/null
-echo "installing...."
+echo "installing qemu...."
 sudo make install > /dev/null
+cd ..
+sudo rm -rf $QEMU 
 #add lib path
 sudo sed '$a /usr/local/lib/' /etc/ld.so.conf
 sudo ldconfig
-echo 'everything is done! enjoy!'
