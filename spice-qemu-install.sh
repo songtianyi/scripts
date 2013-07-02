@@ -107,6 +107,7 @@ sudo rm -f $USBLIB $USBREDIR $SPICEPRO $SPICE $QEMU
 
 ##################install#######################
 
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig/
 sudo pwd
 #install libusb
 cd $USBLIB
@@ -116,7 +117,7 @@ sudo make > /dev/null
 sudo make install > /dev/null 
 cd ..
 sudo rm -rf $USBLIB
-sudo cp /usr/local/lib/pkgconfig/libusb-1.0.pc /usr/lib64/pkgconfig/
+#sudo cp /usr/local/lib/pkgconfig/libusb-1.0.pc /usr/lib64/pkgconfig/
 #install usbredir
 cd $USBREDIR 
 sudo pwd
@@ -142,9 +143,9 @@ sudo make install > /dev/null
 cd ..
 sudo rm -rf $SPICE
 #install qemu
-sudo cp /usr/local/lib/pkgconfig/spice-server.pc /usr/lib64/pkgconfig/
-sudo cp /usr/local/share/pkgconfig/spice-protocol.pc /usr/lib64/pkgconfig/
-sudo cp /usr/local/lib/pkgconfig/libusbredir* /usr/lib64/pkgconfig/
+#sudo cp /usr/local/lib/pkgconfig/spice-server.pc /usr/lib64/pkgconfig/
+#sudo cp /usr/local/share/pkgconfig/spice-protocol.pc /usr/lib64/pkgconfig/
+#sudo cp /usr/local/lib/pkgconfig/libusbredir* /usr/lib64/pkgconfig/
 cd $QEMU
 sudo ./configure --enable-spice --enable-linux-aio --enable-virtio-blk-data-plane --enable-sdl --enable-usb-redir | grep yes
 echo "compiling qemu...."
