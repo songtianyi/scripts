@@ -8,4 +8,3 @@ this repo offers you convenience to do your manual work elegantly
 + **spice-qemu-install.sh** install spice and qemu into your OS,it's not robust!
 + **load-kvm-spice-qemu-modules.sh** load some modules,which needed when you run kvm-qemu-spice
 + **spice-gtk-install.sh** install spice-gtk
-+ **virtv-install.sh** install virt-viewer
