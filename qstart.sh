@@ -27,8 +27,7 @@ fi
 set -x
 
 #start a guest,note that vnc start from 5900
-qemu-system-x86_64 -enable-kvm -localtime\
-    -usb\
+qemu-system-x86_64 -enable-kvm -localtime -usb\
     -monitor stdio\
     -m 2048\
     -cpu host\
@@ -42,9 +41,11 @@ qemu-system-x86_64 -enable-kvm -localtime\
     -usbdevice tablet \
     -spice port=$2,image-compression=quic,jpeg-wan-compression=auto,zlib-glz-wan-compression=auto,streaming-video=all,playback-compression,disable-ticketing\
     -vga qxl\
-    -vnc :$3\
-    -cdrom /home/usr1/Downloads/virtio-win-0.1-59.iso\
-    -usbdevice host:054c:05b8
+    -device  virtio-serial-pci \
+    -chardev spicevmc,id=spicechannel0,name=vdagent \
+    -device virtserialport,chardev=spicechannel0,name=com.redhat.spice.0 \
+    -cdrom /home/usr1/Downloads/virtio-win-0.1-59.iso \
+    -vnc :$3
 #    -device virtio-blk-pci,x-data-plane=on,drive=drive0,scsi=off,config-wce=off\
 set +x
 
