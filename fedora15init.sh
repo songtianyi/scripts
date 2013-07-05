@@ -33,12 +33,6 @@ sudo yum -y install git
 sudo yum -y install svn
 #install chromium
 #install adobe flash
-
-
-
-
-######################essential tools#############
-
 #network tools 
 sudo yum -y install dstat
 sudo yum -y install wget
@@ -48,7 +42,9 @@ sudo yum -y install tunctl
 sudo yum -y install vim
 sudo yum -y install make
 sudo yum -y install gcc gcc-c++
-
+#install escope
+if [ -f "cscope-15.8a.tar.gz" ]; then
+    
 
 
 
