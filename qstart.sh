@@ -31,7 +31,7 @@ qemu-system-x86_64 -enable-kvm -localtime -usb\
     -monitor stdio\
     -m 2048\
     -cpu host\
-    -smp 2\
+    -smp 4,sockets=1,cores=2\
     -soundhw all\
     -boot d\
     -drive file=/home/usr1/Downloads/win7guest.img,if=virtio -net nic,model=virtio \
