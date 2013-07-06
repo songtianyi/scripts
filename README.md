@@ -8,4 +8,5 @@ this repo offers you convenience to do your manual work elegantly
 + **spice-qemu-install.sh** install spice and qemu into your OS,it's not robust!
 + **load-kvm-spice-qemu-modules.sh** load some modules,which needed when you run kvm-qemu-spice
 + **spice-gtk-install.sh** install spice-gtk
-+ **setvimrc.sh** create or overwrite ~/.vimrc file
++ **vimrc.txt** backup my vim config file 
++ **gen-cscope-files.sh** generate cscope file
