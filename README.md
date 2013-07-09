@@ -10,3 +10,4 @@ this repo offers you convenience to do your manual work elegantly
 + **spice-gtk-install.sh** install spice-gtk
 + **vimrc.txt** backup my vim config file 
 + **gen-cscope-files.sh** generate cscope file
++ **gen-key.sh** generate openssl key files, which are used in spice openssl connnection
