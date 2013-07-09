@@ -1,4 +1,5 @@
 #!/bin/sh
+#author songtianyi630@163.com
 #set -x
 
 #down the devices

@@ -1,4 +1,5 @@
 #!/bin/bash
+#author internet share code,modified by songtianyi630@163.com
 
 TARGET='/home/usr1/cscope_db/cscope.files'
 gen_cscope_files_usage() {

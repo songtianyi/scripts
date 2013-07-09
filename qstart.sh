@@ -1,4 +1,5 @@
 #!/bin/sh
+#author songtianyi630@163.com
 #set -x
 
 
@@ -34,7 +35,7 @@ qemu-system-x86_64 -enable-kvm -localtime -usb\
     -smp 2\
     -soundhw all\
     -boot c\
-    -drive file=/home/usr1/image/win7guest32.img.bk,if=virtio -net nic,model=virtio \
+    -drive file=/home/usr1/image/win7guest32.img.1 -net nic,model=virtio \
     -net tap,ifname=$tapdevice,vhost=on,vhostforce=on,vnet_hdr=on,script=no,downscript=no\
     -balloon virtio\
     -usbdevice tablet \
@@ -50,8 +51,9 @@ qemu-system-x86_64 -enable-kvm -localtime -usb\
     -chardev spicevmc,name=usbredir,id=usbredirchardev2 \
     -device usb-redir,chardev=usbredirchardev2,id=usbredirdev2,debug=3 \
     -chardev spicevmc,name=usbredir,id=usbredirchardev3 \
-    -device usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3 \
-    -vnc :$vncPort
+    -device usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3 
+#    -vnc :$vncPort 
+#    -spice tls-port=$TLS,x509-dir=/home/usr1/pki/,tls-channel=main,tls-channel=inputs
 #    -device virtio-blk-pci,x-data-plane=on,drive=drive0,scsi=off,config-wce=off\
 set +x
 

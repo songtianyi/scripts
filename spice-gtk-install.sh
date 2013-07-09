@@ -1,4 +1,5 @@
 #!/bin/sh
+#author songtianyi630@163.com
 #set +x
 
 SPICEGTK="spice-gtk-0.20.tar.bz2"

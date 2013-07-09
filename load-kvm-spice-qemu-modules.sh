@@ -1,4 +1,6 @@
 #!/bin/bash
+#author songtianyi630@163.com
+
 #set +x
 
 ###############spice,kvm or qemu################

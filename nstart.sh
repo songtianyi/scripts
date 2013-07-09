@@ -1,4 +1,5 @@
 #!/bin/sh
+#author songtiany630@163.com
 #set -x
 
 #delete network device IP configuration

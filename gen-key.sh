@@ -1,4 +1,5 @@
 #!/bin/sh
+#author songtianyi630@163.com
 
 KEY_DIR=/home/usr1/pki/
 if [ ! -d $KEY_DIR ]; then
