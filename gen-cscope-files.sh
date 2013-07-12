@@ -31,6 +31,6 @@ fi
 for dir in $@
 do
    if [ ${dir} != ${1} ]; then
-       find ${1}/${dir}  \( -name "*.[hc]"  -o -name "*.cpp" \)  -print >> ${TARGET}
+       find ${1}/${dir}  \( -name "*.[hc]"  -o -name "*.cpp" \)  -print >>  ${TARGET}
    fi
 done

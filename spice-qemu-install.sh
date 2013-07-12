@@ -108,7 +108,8 @@ sudo rm -f $USBLIB $USBREDIR $SPICEPRO $SPICE $QEMU
 
 ##################install#######################
 
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig/
+PKG_CONFIG_PATH=/usr/lib64/pkgconfig/:/usr/local/lib/pkgconfig/
+echo $PKG_CONFIG_PATH
 sudo pwd
 #install libusb
 cd $USBLIB

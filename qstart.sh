@@ -51,7 +51,9 @@ qemu-system-x86_64 -enable-kvm -localtime -usb\
     -chardev spicevmc,name=usbredir,id=usbredirchardev2 \
     -device usb-redir,chardev=usbredirchardev2,id=usbredirdev2,debug=3 \
     -chardev spicevmc,name=usbredir,id=usbredirchardev3 \
-    -device usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3 
+    -device usb-redir,chardev=usbredirchardev3,id=usbredirdev3,debug=3 \
+    -device qxl
+#    -monitor stdio 
 #    -vnc :$vncPort 
 #    -spice tls-port=$TLS,x509-dir=/home/usr1/pki/,tls-channel=main,tls-channel=inputs
 #    -device virtio-blk-pci,x-data-plane=on,drive=drive0,scsi=off,config-wce=off\
