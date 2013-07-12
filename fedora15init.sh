@@ -1,15 +1,13 @@
 #!/bin/sh
 #kernel version 2.6.38.6-26.rc1.fc15.x86_64
 #author songtianyi630@163.com
-#create date 2013-06-30
-#update date 2013-07-01
 
 #check kernel version
 kernel=$(uname -r)
 if [ $kernel = "2.6.38.6-26.rc1.fc15.x86_64" ];then
 	echo "OK"
 else
-	echo "check your kernel version"
+	echo "check your kernel version,you can delete the checking code,but i can't promise it will work on your linux system"
 fi
 exit 1
 
@@ -31,7 +29,11 @@ sudo yum -y install davfs2
 sudo yum -y install emacs
 sudo yum -y install git
 sudo yum -y install svn
+sudo yum -y install compress
 #install chromium
+cd /etc/yum.repos.d/
+sudo wget http://repos.fedorapeople.org/repos/spot/chromium/fedora-chromium-stable.repo
+sudo yum -y install chromium
 #install adobe flash
 #network tools 
 sudo yum -y install dstat
@@ -42,11 +44,8 @@ sudo yum -y install tunctl
 sudo yum -y install vim
 sudo yum -y install make
 sudo yum -y install gcc gcc-c++
-#install escope
-if [ -f "cscope-15.8a.tar.gz" ]; then
     
 
 
 
 ###############################################
-
