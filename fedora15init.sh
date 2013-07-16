@@ -1,14 +1,20 @@
-#!/bin/sh
+#!/bin/sh  -e 
 #kernel version 2.6.38.6-26.rc1.fc15.x86_64
 #author songtianyi630@163.com
 
 #check kernel version
 kernel=$(uname -r)
+
 if [ $kernel = "2.6.38.6-26.rc1.fc15.x86_64" ];then
 	echo "OK"
 else
-	echo "check your kernel version,you can delete the checking code,but i can't promise it will work on your linux system"
-	exit 1
+	read -n1 -p "The script is only tested in 2.6.38.6-26.rc1.fc15.x86_64,do you want to CONTINUE[Y/N]?" answer
+	case "$answer" in
+		Y|y) echo "OK";;
+		*)	echo 
+			echo "Terminated by user `whoami`"
+			exit;;
+	esac
 fi
 
 
@@ -19,6 +25,7 @@ sudo yum -y install vim
 sudo yum -y install wget
 sudo yum -y install make
 sudo yum -y install gcc gcc-c++
+sudo yum -y install autoconf
 
 
 
@@ -37,6 +44,7 @@ sudo yum -y install davfs2
 sudo yum -y install git
 sudo yum -y install svn
 sudo yum -y install compress
+sudo yum -y install cscope
 #install chromium
 cd /etc/yum.repos.d/
 sudo wget http://repos.fedorapeople.org/repos/spot/chromium/fedora-chromium-stable.repo
@@ -49,6 +57,7 @@ sudo yum install flash-plugin -y
 sudo yum -y install dstat
 sudo yum -y install bridge-utils
 sudo yum -y install tunctl
+sudo yum -y install lynx
     
 
 

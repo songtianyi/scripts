@@ -1,53 +1,63 @@
 #!/bin/sh
+
+
+
+
 #author songtianyi630@163.com
-#set +x
 
-
-######################essential tools#############
-
-#network tools 
-sudo yum -y install wget
-#essential tools
-sudo yum -y install make
-sudo yum -y install gcc gcc-c++
+#------------------------------------------
+#This script has been tested in flowing env
+#OS=fedora 15, kernel=2.6.43
+#------------------------------------------
 
 
 
 
-##################spice###########################
-
-sudo yum -y install glib2-devel
-sudo yum -y install zlib-devel
-sudo yum -y install pixman-devel
-sudo yum -y install autoconf
-sudo yum -y install celt051-devel
-#install sohu repo
-sudo wget http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm
-sudo yum -y install epel-release-6-8.noarch.rpm
-sudo rm  -f epel-release-6-8.noarch.rpm
-sudo yum -y install pyparsing
-sudo yum -y install alsa-lib-devel
-sudo yum -y install openssl-devel
-sudo yum -y install libcacard libcacard-devel 
-sudo yum -y install cairo-devel cairo
-sudo yum -y install cyrus-sasl-devel
-sudo yum -y install libjpeg-turbo-devel
-#if you wanna enable gui,cegui is needed
-#when you compile cegui, freetype2 and libpcre must be installed
-sudo yum -y install freetype-devel
-sudo yum -y install pcre-devel
-
-
-
-
-###################qemu#########################
-
-#install VNC
-sudo yum -y install vnc
-#install libaio-devel to enable linux-AIO
-sudo yum -y install libaio-devel libaio
-#install SDL-devel to enable SDL
-sudo yum -y install SDL-devel
+#######################essential tools#############
+#
+##network tools 
+#sudo yum -y install wget
+##compile tools
+#sudo yum -y install make
+#sudo yum -y install gcc gcc-c++
+#sudo yum -y install autoconf
+#
+#
+#
+#
+###################spice###########################
+#
+#sudo yum -y install glib2-devel
+#sudo yum -y install zlib-devel
+#sudo yum -y install pixman-devel
+#sudo yum -y install celt051-devel
+##install sohu repo
+#wget http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm
+#sudo yum -y install epel-release-6-8.noarch.rpm
+#sudo rm  -f epel-release-6-8.noarch.rpm*
+#sudo yum -y install pyparsing
+#sudo yum -y install alsa-lib-devel
+#sudo yum -y install openssl-devel
+#sudo yum -y install libcacard-devel 
+#sudo yum -y install cairo-devel 
+#sudo yum -y install cyrus-sasl-devel
+#sudo yum -y install libjpeg-turbo-devel
+##if you wanna enable gui,cegui is needed
+##when you compile cegui, freetype2 and libpcre must be installed
+#sudo yum -y install freetype-devel
+#sudo yum -y install pcre-devel
+#
+#
+#
+#
+####################qemu#########################
+#
+##install VNC
+#sudo yum -y install vnc
+##install libaio-devel to enable linux-AIO
+#sudo yum -y install libaio-devel
+##install SDL-devel to enable SDL
+#sudo yum -y install SDL-devel
 
 
 
@@ -57,105 +67,84 @@ sudo sh load-kvm-spice-qemu-modules.sh
 
 #############Download and extract files########
 
-#specify usblib,usbredir,spice.spice-protocol,qemu package name
-SBLIB="libusb-1.0.9.tar.bz2"
-SBREDIR="usbredir-0.6.tar.bz2"
-PICE="spice-0.12.3.tar.bz2"
-PICEPRO="spice-protocol-0.12.6.tar.bz2"
-EMU="qemu-1.4.2.tar.bz2"
 #specify package url path
-SBLIBPATH="http://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.9/libusb-1.0.9.tar.bz2"
-SBREDIRPATH="http://spice-space.org/download/usbredir/usbredir-0.6.tar.bz2"
-PICEPATH="http://spice-space.org/download/releases/spice-0.12.3.tar.bz2"
-PICEPROPATH="http://spice-space.org/download/releases/spice-protocol-0.12.6.tar.bz2"
-EMUPATH="http://wiki.qemu-project.org/download/qemu-1.4.2.tar.bz2"
+USBLIBPATH="http://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.9/libusb-1.0.9.tar.bz2"
+USBLIB_COMPILE_OPTION=""
+USBREDIRPATH="http://spice-space.org/download/usbredir/usbredir-0.6.tar.bz2"
+USBREDIR_COMPILE_OPTION=""
+SPICEPROPATH="http://spice-space.org/download/releases/spice-protocol-0.12.6.tar.bz2"
+SPICEPRO_COMPILE_OPTION=""
+SPICEPATH="http://spice-space.org/download/releases/spice-0.12.3.tar.bz2"
+SPICE_COMPILE_OPTION="--enable-smartcard --enable-client --enable-opengl"
+QEMUPATH="http://wiki.qemu-project.org/download/qemu-1.4.2.tar.bz2"
+QEMU_COMPILE_OPTION="--enable-spice --enable-linux-aio --enable-virtio-blk-data-plane --enable-sdl --enable-usb-redir"
 
-if [ -f $USBLIB ]; then
-	echo $USBLIB exists
-else
-	sudo wget $USBLIBPATH 
-fi
-if [ -f $USBREDIR ]; then
-	echo $USBREDIR exists
-else
-	sudo wget $USBREDIR 
-fi
-if [ -f $SPICE ]; then
-	echo $SPICE exists
-else
-	sudo wget $SPICE 
-fi
-if [ -f $SPICEPRO ]; then
-	echo $SPICEPRO exists 
-else
-	sudo wget $SPICEPRO 
-fi
-if [ -f $QEMU ]; then
-	echo $QEMU exists
-else
-	sudo wget $QEMU 
-fi
-extract
-sudo tar -xf $USBLIB 
-sudo tar -xf $USBREDIR 
-sudo tar -xf $SPICE 
-sudo tar -xf $SPICEPRO 
-sudo tar -xf $QEMU 
-sudo rm -f $USBLIB $USBREDIR $SPICEPRO $SPICE $QEMU
+#package download url array
+URL=($USBLIBPATH $USBREDIRPATH $SPICEPROPATH $SPICEPATH $QEMUPATH)
+#compile options array
+COMPILE_OPTION[0]=$USBLIB_COMPILE_OPTION
+COMPILE_OPTION[1]=$USBREDIR_COMPILE_OPTION
+COMPILE_OPTION[2]=$SPICEPRO_COMPILE_OPTION
+COMPILE_OPTION[3]=$SPICE_COMPILE_OPTION
+COMPILE_OPTION[4]=$QEMU_COMPILE_OPTION
 
 
-
-
-##################install#######################
-
-PKG_CONFIG_PATH=/usr/lib64/pkgconfig/:/usr/local/lib/pkgconfig/
-echo $PKG_CONFIG_PATH
-sudo pwd
-#install libusb
-cd $USBLIB
-sudo pwd
-sudo ./configure > /dev/null 
-sudo make > /dev/null 
-sudo make install > /dev/null 
-cd ..
-sudo rm -rf $USBLIB
-#sudo cp /usr/local/lib/pkgconfig/libusb-1.0.pc /usr/lib64/pkgconfig/
-#install usbredir
-cd $USBREDIR 
-sudo pwd
-sudo ./configure > /dev/null 
-sudo make > /dev/null 
-make install > /dev/null 
-cd ..
-sudo rm -rf $USBREDIR
-#install spice protocol
-cd $SPICEPRO
-sudo pwd
-sudo ./configure > /dev/null 
-sudo make  > /dev/null 
-make install > /dev/null 
-cd ..
-sudo rm -rf $SPICEPRO
-#install spice
-cd $SPICE
-sudo pwd
-sudo ./configure --enable-smartcard --enable-client --enable-opengl > /dev/null  
-sudo make > /dev/null  
-sudo make install > /dev/null  
-cd ..
-sudo rm -rf $SPICE
-#install qemu
-#sudo cp /usr/local/lib/pkgconfig/spice-server.pc /usr/lib64/pkgconfig/
-#sudo cp /usr/local/share/pkgconfig/spice-protocol.pc /usr/lib64/pkgconfig/
-#sudo cp /usr/local/lib/pkgconfig/libusbredir* /usr/lib64/pkgconfig/
-cd $QEMU
-sudo ./configure --enable-spice --enable-linux-aio --enable-virtio-blk-data-plane --enable-sdl --enable-usb-redir | grep yes
-echo "compiling qemu...."
-sudo make > /dev/null
-echo "installing qemu...."
-sudo make install > /dev/null
-cd ..
-sudo rm -rf $QEMU 
 #add lib path
-sudo sed '$a /usr/local/lib/' /etc/ld.so.conf
+echo "/usr/local/lib/" >> /etc/ld.so.conf
+echo "/usr/local/lib/pkgconfig/" >> /etc/ld.so.conf
+awk '!a[$0]++' /etc/ld.so.conf > /etc/ld.so.conf.tmp
+sudo mv -f /etc/ld.so.conf.tmp /etc/ld.so.conf
 sudo ldconfig
+
+
+SUFFIX="-install-dir"
+count=0
+
+for cur in ${URL[@]}
+do
+	package=${cur##*/}
+	if [ -f $package ]; then
+		echo $package exists
+	else
+		wget $cur
+	fi
+
+	if [ ! -d $package$SUFFIX ]; then
+		mkdir $package$SUFFIX
+		tar -xf $package -C $package$SUFFIX
+	fi
+
+	#configure
+	cd $package$SUFFIX
+	cd  `ls -L | grep "^."`
+	echo "`pwd` #sudo ./configure ${COMPILE_OPTION[$count]} | grep -i error"
+	echo ------------error info ----------------
+	sudo  ./configure ${COMPILE_OPTION[$count]} | grep -i error
+	echo ------------===========----------------
+	echo 
+	
+	#make & make install
+	
+	read -n1 -p "CONTINUE to make and make install?[Y?N]" answer
+	case "$answer" in
+		Y|y) echo "OK, to make and make install";;
+		*)	echo "exit"
+			exit;;
+	esac
+
+	sudo  make > /dev/null | grep -i error
+	sudo  make install > /dev/null | grep -i error
+
+	case "$count" in
+		0) sudo cp /usr/local/lib/pkgconfig/libusb-1.0.pc /usr/lib64/pkgconfig/ ;;
+		2) sudo cp /usr/local/share/pkgconfig/spice-protocol.pc /usr/lib64/pkgconfig/ ;;
+		3) sudo cp /usr/local/lib/pkgconfig/spice-server.pc /usr/lib64/pkgconfig/
+		   sudo cp /usr/local/lib/pkgconfig/libusbredir* /usr/lib64/pkgconfig/ ;;
+	esac
+
+	cd ../../
+	rm -rf $package$SUFFIX
+	#rm -f $package
+	count=$[ $count + 1 ]	
+done
+
