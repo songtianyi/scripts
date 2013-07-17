@@ -13,51 +13,51 @@
 
 
 
-#######################essential tools#############
-#
-##network tools 
-#sudo yum -y install wget
-##compile tools
-#sudo yum -y install make
-#sudo yum -y install gcc gcc-c++
-#sudo yum -y install autoconf
-#
-#
-#
-#
-###################spice###########################
-#
-#sudo yum -y install glib2-devel
-#sudo yum -y install zlib-devel
-#sudo yum -y install pixman-devel
-#sudo yum -y install celt051-devel
-##install sohu repo
-#wget http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm
-#sudo yum -y install epel-release-6-8.noarch.rpm
-#sudo rm  -f epel-release-6-8.noarch.rpm*
-#sudo yum -y install pyparsing
-#sudo yum -y install alsa-lib-devel
-#sudo yum -y install openssl-devel
-#sudo yum -y install libcacard-devel 
-#sudo yum -y install cairo-devel 
-#sudo yum -y install cyrus-sasl-devel
-#sudo yum -y install libjpeg-turbo-devel
-##if you wanna enable gui,cegui is needed
-##when you compile cegui, freetype2 and libpcre must be installed
-#sudo yum -y install freetype-devel
-#sudo yum -y install pcre-devel
-#
-#
-#
-#
-####################qemu#########################
-#
-##install VNC
-#sudo yum -y install vnc
-##install libaio-devel to enable linux-AIO
-#sudo yum -y install libaio-devel
-##install SDL-devel to enable SDL
-#sudo yum -y install SDL-devel
+######################essential tools#############
+
+#network tools 
+sudo yum -y install wget
+#compile tools
+sudo yum -y install make
+sudo yum -y install gcc gcc-c++
+sudo yum -y install autoconf
+
+
+
+
+##################spice###########################
+
+sudo yum -y install glib2-devel
+sudo yum -y install zlib-devel
+sudo yum -y install pixman-devel
+sudo yum -y install celt051-devel
+#install sohu repo
+wget http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm
+sudo yum -y install epel-release-6-8.noarch.rpm
+sudo rm  -f epel-release-6-8.noarch.rpm*
+sudo yum -y install pyparsing
+sudo yum -y install alsa-lib-devel
+sudo yum -y install openssl-devel
+sudo yum -y install libcacard-devel 
+sudo yum -y install cairo-devel 
+sudo yum -y install cyrus-sasl-devel
+sudo yum -y install libjpeg-turbo-devel
+#if you wanna enable gui,cegui is needed
+#when you compile cegui, freetype2 and libpcre must be installed
+sudo yum -y install freetype-devel
+sudo yum -y install pcre-devel
+
+
+
+
+###################qemu#########################
+
+#install VNC
+sudo yum -y install vnc
+#install libaio-devel to enable linux-AIO
+sudo yum -y install libaio-devel
+#install SDL-devel to enable SDL
+sudo yum -y install SDL-devel
 
 
 
@@ -91,11 +91,17 @@ COMPILE_OPTION[4]=$QEMU_COMPILE_OPTION
 
 #add lib path
 echo "/usr/local/lib/" >> /etc/ld.so.conf
-echo "/usr/local/lib/pkgconfig/" >> /etc/ld.so.conf
 awk '!a[$0]++' /etc/ld.so.conf > /etc/ld.so.conf.tmp
 sudo mv -f /etc/ld.so.conf.tmp /etc/ld.so.conf
 sudo ldconfig
 
+#check dir
+if [  -d /usr/local/lib/pkgconfig -a -d /usr/lib64/pkgconfig -a /usr/local/share/pkgconfig ]; then
+	echo check dir....yes
+else
+	echo check /usr/local/lib/pkgconfig /usr/lib64/pkgconfig /usr/local/share/pkgconfig fail!
+	exit
+fi
 
 SUFFIX="-install-dir"
 count=0
@@ -144,7 +150,7 @@ do
 
 	cd ../../
 	rm -rf $package$SUFFIX
-	#rm -f $package
+	rm -f $package
 	count=$[ $count + 1 ]	
 done
 

@@ -44,6 +44,7 @@ sudo yum -y install davfs2
 sudo yum -y install git
 sudo yum -y install svn
 sudo yum -y install compress
+sudo yum -y install strace
 sudo yum -y install cscope
 #install chromium
 cd /etc/yum.repos.d/
