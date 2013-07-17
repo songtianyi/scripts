@@ -100,9 +100,9 @@ if [  -d /usr/local/lib/pkgconfig -a -d /usr/lib64/pkgconfig -a /usr/local/share
 	echo check dir....yes
 else
 	echo check /usr/local/lib/pkgconfig /usr/lib64/pkgconfig /usr/local/share/pkgconfig fail!
-	exit
+	exit 1
 fi
-
+exit 0
 SUFFIX="-install-dir"
 count=0
 
