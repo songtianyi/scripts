@@ -11,64 +11,60 @@
 #------------------------------------------
 
 
+set -u
 
-
-######################essential tools#############
-
-#network tools 
-sudo yum -y install wget
-#compile tools
-sudo yum -y install make
-sudo yum -y install gcc gcc-c++
-sudo yum -y install autoconf
-
-
-
-
-##################spice###########################
-
-sudo yum -y install glib2-devel
-sudo yum -y install zlib-devel
-sudo yum -y install pixman-devel
-sudo yum -y install celt051-devel
-#install sohu repo
-wget http://mirrors.sohu.com/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm
-sudo yum -y install epel-release-6-8.noarch.rpm
-sudo rm  -f epel-release-6-8.noarch.rpm*
-sudo yum -y install pyparsing
-sudo yum -y install alsa-lib-devel
-sudo yum -y install openssl-devel
-sudo yum -y install libcacard-devel 
-sudo yum -y install cairo-devel 
-sudo yum -y install cyrus-sasl-devel
-sudo yum -y install libjpeg-turbo-devel
-#if you wanna enable gui,cegui is needed
-#when you compile cegui, freetype2 and libpcre must be installed
-sudo yum -y install freetype-devel
-sudo yum -y install pcre-devel
-
-
-
-
-###################qemu#########################
-
-#install VNC
-sudo yum -y install vnc
-#install libaio-devel to enable linux-AIO
-sudo yum -y install libaio-devel
-#install SDL-devel to enable SDL
-sudo yum -y install SDL-devel
-
+#
+#######################essential tools#############
+#
+##network tools 
+#sudo yum -y install wget
+##compile tools
+#sudo yum -y install make
+#sudo yum -y install gcc gcc-c++
+#sudo yum -y install autoconf
+#
+#
+#
+#
+###################spice###########################
+#
+#sudo yum -y install glib2-devel
+#sudo yum -y install zlib-devel
+#sudo yum -y install pixman-devel
+#sudo yum -y install celt051-devel
+#sudo yum -y install pyparsing
+#sudo yum -y install alsa-lib-devel
+#sudo yum -y install openssl-devel
+#sudo yum -y install libcacard-devel 
+#sudo yum -y install cairo-devel 
+#sudo yum -y install cyrus-sasl-devel
+#sudo yum -y install libjpeg-turbo-devel
+#sudo yum -y install libudev-devel
+##if you wanna enable gui,cegui is needed
+##when you compile cegui, freetype2 and libpcre must be installed
+#sudo yum -y install freetype-devel
+#sudo yum -y install pcre-devel
+#
+#
+#
+#
+####################qemu#########################
+#
+##install VNC
+#sudo yum -y install vnc
+##install libaio-devel to enable linux-AIO
+#sudo yum -y install libaio-devel
+##install SDL-devel to enable SDL
+#sudo yum -y install SDL-devel
+#
 
 
 
-#load modules
-sudo sh load-kvm-spice-qemu-modules.sh
 
 #############Download and extract files########
 
 #specify package url path
-USBLIBPATH="http://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.9/libusb-1.0.9.tar.bz2"
+USBLIBPATH="http://downloads.sourceforge.net/libusbx/libusbx-1.0.16.tar.bz2"
 USBLIB_COMPILE_OPTION=""
 USBREDIRPATH="http://spice-space.org/download/usbredir/usbredir-0.6.tar.bz2"
 USBREDIR_COMPILE_OPTION=""
@@ -99,10 +95,10 @@ sudo ldconfig
 if [  -d /usr/local/lib/pkgconfig -a -d /usr/lib64/pkgconfig -a /usr/local/share/pkgconfig ]; then
 	echo check dir....yes
 else
-	echo check /usr/local/lib/pkgconfig /usr/lib64/pkgconfig /usr/local/share/pkgconfig fail!
+	echo check /usr/local/lib/pkgconfig /usr/lib64/pkgconfig /usr/local/share/pkgconfig failed!
 	exit 1
 fi
-exit 0
+
 SUFFIX="-install-dir"
 count=0
 

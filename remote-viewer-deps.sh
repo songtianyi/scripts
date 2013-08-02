@@ -7,7 +7,6 @@ sudo mv -f fedora-cross.repo /etc/yum.repos.d/
 
 #essential  tools
 sudo yum -y install mingw32-gcc
-sudo yum -y install wget
 
 #dependencies
 sudo yum -y install mingw32-filesystem
@@ -57,16 +56,3 @@ sudo yum -y install mingw32-openssl
 
 
 
-VIRTVIEWERPATH="https://git.fedorahosted.org/cgit/virt-viewer.git/snapshot/virt-viewer-0.5.6.tar.bz2"
-VIRTVIEWERPACKAGE=${VIRTVIEWERPATH##*/}
-#download source
-if [ -f "$VIRTVIEWERPACKAGE" ]; then
-    echo "$VIRTVIEWERPACKAGE exists"
-else
-    sudo wget $VIRTVIEWERPATH 
-fi
-
-sudo tar -xf $VIRTVIEWERPACKAGE 
-cd virt-viewer-0.5.6
-./autogen.sh
-mingw32-configure --with-gtk=2.0 --with-audio=gstreamer --enable-usbredir=yes --with-spice-gtk --with-gtk-vnc

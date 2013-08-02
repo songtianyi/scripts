@@ -2,7 +2,7 @@ this repo offers you convenience to do your manual work elegantly
 
 #*Catlog*
 + **blog-template.html** blog article template in html format 
-+ **fedora15init.sh** it is uesful when you reinstall your fedora system
++ **fedora-init.sh** it is uesful when you reinstall your fedora system
 + **gen-cscope-files.sh** generate cscope file
 + **gen-key.sh** generate openssl key files, which are used in spice openssl connnection
 + **load-kvm-spice-qemu-modules.sh** load some modules,which needed when you run kvm-qemu-spice
@@ -10,5 +10,6 @@ this repo offers you convenience to do your manual work elegantly
 + **nstop.sh** if you use nstart.h script to config your host's network,it is useful to recover the network back to orgin
 + **qstart.sh** start a guest with qemu and create a tap device
 + **spice-qemu-install.sh** install spice and qemu into your OS,it's not robust!
-+ **spice-gtk-install.sh** install spice-gtk
++ **spice-gtk-deps.sh** install spice-gtk
++ **remote-viewer-deps.sh** install spice-gtk
 + **vimrc.txt** backup my vim config file 
