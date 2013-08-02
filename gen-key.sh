@@ -5,7 +5,7 @@ KEY_DIR=/home/usr1/pki/
 if [ ! -d $KEY_DIR ]; then
     mkdir $KEY_DIR 
 fi
-cd /home/usr1/pki/
+cd $KEY_DIR 
 
 CA_KEY=ca-key.pem
 CA_CERT=ca-cert.pem

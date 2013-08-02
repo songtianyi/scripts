@@ -1,7 +1,11 @@
 #!/bin/bash
-#author internet share code,modified by songtianyi630@163.com
+#internet share code,modified by songtianyi630@163.com
 
 TARGET='/home/usr1/cscope_db/cscope.files'
+if [ ! -d "/home/usr1/cscope_db" ];then
+	mkdir /home/usr1/cscope_db
+fi
+
 gen_cscope_files_usage() {
      echo "gen_cscope_files.sh 源码顶层目录(绝对路径) 待扫描子目录1 [待扫描子目录2] ... [待扫描子目录N]"
 }

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 #author songtianyi630@163.com
 #set +x
 

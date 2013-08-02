@@ -39,7 +39,7 @@ qemu-system-x86_64 -enable-kvm -localtime -usb\
     -net tap,ifname=$tapdevice,vhost=on,vhostforce=on,vnet_hdr=on,script=no,downscript=no\
     -balloon virtio\
     -usbdevice tablet \
-    -spice port=$spicePort,image-compression=quic,jpeg-wan-compression=auto,zlib-glz-wan-compression=auto,streaming-video=all,playback-compression,disable-ticketing\
+    -spice port=$spicePort,image-compression=quic,jpeg-wan-compression=auto,zlib-glz-wan-compression=auto,streaming-video=all,playback-compression=on,disable-ticketing\
     -vga qxl \
     -device  virtio-serial-pci \
     -chardev spicevmc,id=spicechannel0,name=vdagent \

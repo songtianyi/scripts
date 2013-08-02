@@ -44,6 +44,7 @@
 					<li><a style="text-decoration:none" href="#example1">图片示例</a></li>
 					<li><a style="text-decoration:none" href="#example2">代码示例</a></li>
 					<li><a style="text-decoration:none" href="#example3">引用示例</a></li>
+					<li><a style="text-decoration:none" href="#example4">图表示例</a></li>
 				</ul>
 			<li><a style="text-decoration:none" href="#reference">参考资料</a></li>
 		</ol>
@@ -77,7 +78,7 @@
 
 	<h2 id="diy">3 纯手动</h2>
 	<p>
-	如果你经常写博客，又追求美观的排版，那就纯手动DIY吧，总结一个固定的模板，写起文章来比word或者博客编辑器快多了,而且在不同的博客系统里能保持一致。如果是写网页博客的话，就用html，同时也可以转成pdf和图片，如果只需要pdf的话，建议使用Latex，比较美观，支持数学公式。这篇文章就是用vim纯手动完成的，作为以后的博文模板，对我来说已经够用，不想再花精力调样式和排版了。
+	如果你经常写博客，又追求美观的排版，那就纯手动DIY吧，总结一个固定的模板，写起文章来比word或者博客编辑器快多了,而且在不同的博客系统里能保持一致。如果是写网页博客的话，就用html，同时也可以转成pdf和图片，如果只需要pdf的话，建议使用Latex，比较美观，支持数学公式。这篇文章就是用vim纯手动完成的，作为以后的博文模板，对我来说已经够用，不想再花精力调样式和排版了，文件放在了<a href="https://github.com/songtianyi/scripts/blob/master/blog-template.html">github上</a>
 	</p>
 	<p>
 	公式怎么办？可以参照<a href="http://www.qiujingyu.com/insert-math-formula-into-web-page.html#more-847">这里</a>的方式，但是门户网站的博客系统不支持javascript，如果你用的是wordpress或者只需要pdf格式（wkhtmltopdf支持javascript，注意用--javascript-delay选项来调整js的加载时间）可以用他的方法。除了使用js，目前没有更好的方法用html显示公式，图片是个替代方案，<a href="http://frog.isima.fr/bruno/share/tex2png/">Tex2PNG</a>可以将Latex数学公式转换成图片。
@@ -117,6 +118,14 @@
 	</blockquote>
 
 
+	<h4 id="example4">4.4 图表示例</h4>
+	<p>
+	有时候免不了在自己的博文里插入一些图表，好的图表工具免不了用JS，只好用图片来代替了。<a href="http://www.onlinecharttool.com/graph">charttool</a>，能够在线生成你想要的图表，不过不支持中文。
+	</p>
+	<div style="text-align:center">
+	<img  src="http://img2.ph.126.net/fs9LX7NdGV49BZEjj1pF3Q==/6597319355797200131.png">
+	<p>图2 图表示例</p>
+	</div>
 	<h2 id="reference">5 参考资料</h2>
 	<div>[1]陈军.云计算之初探--桌面云[J].《冶金自动化》，2012</div>
 
