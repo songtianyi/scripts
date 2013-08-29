@@ -8,55 +8,56 @@
 #------------------------------------------
 #This script has been tested in flowing env
 #OS=fedora 15, kernel=2.6.43
+#OS=fedora 19, kernel=3.9.5
 #------------------------------------------
 
 
 set -u
 
-#
-#######################essential tools#############
-#
-##network tools 
-#sudo yum -y install wget
-##compile tools
-#sudo yum -y install make
-#sudo yum -y install gcc gcc-c++
-#sudo yum -y install autoconf
-#
-#
-#
-#
-###################spice###########################
-#
-#sudo yum -y install glib2-devel
-#sudo yum -y install zlib-devel
-#sudo yum -y install pixman-devel
-#sudo yum -y install celt051-devel
-#sudo yum -y install pyparsing
-#sudo yum -y install alsa-lib-devel
-#sudo yum -y install openssl-devel
-#sudo yum -y install libcacard-devel 
-#sudo yum -y install cairo-devel 
-#sudo yum -y install cyrus-sasl-devel
-#sudo yum -y install libjpeg-turbo-devel
-#sudo yum -y install libudev-devel
-##if you wanna enable gui,cegui is needed
-##when you compile cegui, freetype2 and libpcre must be installed
-#sudo yum -y install freetype-devel
-#sudo yum -y install pcre-devel
-#
-#
-#
-#
-####################qemu#########################
-#
-##install VNC
-#sudo yum -y install vnc
-##install libaio-devel to enable linux-AIO
-#sudo yum -y install libaio-devel
-##install SDL-devel to enable SDL
-#sudo yum -y install SDL-devel
-#
+
+######################essential tools#############
+
+#network tools 
+sudo yum -y install wget
+#compile tools
+sudo yum -y install make
+sudo yum -y install gcc gcc-c++
+sudo yum -y install autoconf
+
+
+
+
+##################spice###########################
+
+sudo yum -y install glib2-devel
+sudo yum -y install zlib-devel
+sudo yum -y install pixman-devel
+sudo yum -y install celt051-devel
+sudo yum -y install pyparsing
+sudo yum -y install alsa-lib-devel
+sudo yum -y install openssl-devel
+sudo yum -y install libcacard-devel 
+sudo yum -y install cairo-devel 
+sudo yum -y install cyrus-sasl-devel
+sudo yum -y install libjpeg-turbo-devel
+sudo yum -y install libudev-devel
+#if you wanna enable gui,cegui is needed
+#when you compile cegui, freetype2 and libpcre must be installed
+sudo yum -y install freetype-devel
+sudo yum -y install pcre-devel
+
+
+
+
+###################qemu#########################
+
+#install VNC
+sudo yum -y install vnc
+#install libaio-devel to enable linux-AIO
+sudo yum -y install libaio-devel
+#install SDL-devel to enable SDL
+sudo yum -y install SDL-devel
+
 
 
 
