@@ -12,5 +12,6 @@ this repo offers you convenience to do your manual work elegantly
 + **qstart.sh** start a guest with qemu and create a tap device
 + **spice-qemu-install.sh** install spice and qemu into your OS,it's not robust!
 + **spice-gtk-deps.sh** install spice-gtk
++ **ss5-install.sh** socket server 5 installation script
 + **remote-viewer-deps.sh** install spice-gtk
 + **vimrc.txt** backup my vim config file 
