@@ -44,6 +44,8 @@ sudo yum -y install strace
 sudo yum -y install cscope
 sudo yum -y install ffmpeg
 sudo yum -y install rdesktop
+sudo yum -y install cdrecord
+sudo yum -y install dos2unix
 #needed for mounting exfat
 sudo yum -y install scons
 sudo yum -y install fuse-devel
