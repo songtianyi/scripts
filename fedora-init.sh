@@ -11,6 +11,7 @@ sudo yum -y install wget
 sudo yum -y install make
 sudo yum -y install gcc gcc-c++
 sudo yum -y install autoconf
+sudo yum -y install yum-fastestmirror
 
 
 
@@ -33,7 +34,6 @@ sudo rm -f /etc/yum.repos.d/adobe-linux-x86_64.repo
 #office
 sudo yum -y groupinstall "Office/Productivity"
 #some useful tools
-sudo yum -y install yum-fastestmirror
 sudo yum -y install httpd
 sudo yum -y install telnet
 sudo yum -y install davfs2
@@ -41,7 +41,6 @@ sudo yum -y install git
 sudo yum -y install svn
 sudo yum -y install compress
 sudo yum -y install strace
-sudo yum -y install cscope
 sudo yum -y install ffmpeg
 sudo yum -y install rdesktop
 sudo yum -y install cdrecord
