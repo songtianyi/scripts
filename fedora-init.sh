@@ -12,10 +12,7 @@ sudo yum -y install make
 sudo yum -y install gcc gcc-c++
 sudo yum -y install autoconf
 sudo yum -y install yum-fastestmirror
-
-
-
-########################optional##################
+sudo yum -y install git
 
 #install rpmfusion
 su -c 'yum localinstall --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'   
@@ -37,7 +34,6 @@ sudo yum -y groupinstall "Office/Productivity"
 sudo yum -y install httpd
 sudo yum -y install telnet
 sudo yum -y install davfs2
-sudo yum -y install git
 sudo yum -y install svn
 sudo yum -y install compress
 sudo yum -y install strace
@@ -55,4 +51,20 @@ sudo yum -y install tunctl
 sudo yum -y install lynx
 
 
-###############################################
+###############aliedit############################
+if [ -f "aliedit.tar.gz" ] ; then
+	echo package exists
+else 
+	wget https://download.alipay.com/alipaysc/linux/aliedit/1.0.3.20/aliedit.tar.gz 
+	tar -xf aliedit.tar.gz
+fi
+if [ `getconf LONG_BIT` -eq 64 ];then
+	echo 64bit
+	ln -sv /usr/lib64/libpng15.so.15.* /usr/lib64/libpng12.so.0
+else
+	echo 32bit
+fi
+su $LOGNAME "./aliedit.sh"
+rm -rf aliedit*
+
+##################################################

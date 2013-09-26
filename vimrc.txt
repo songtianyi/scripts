@@ -14,19 +14,7 @@ set filetype=on
 set confirm
 set ignorecase
 set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
-
-filetype plugin on
-filetype indent on
-set iskeyword+=_,$,@,%,#,-
-
-au FileType php setlocal dict+=~/.vim/dict/php_funclist.dict
-au FileType css setlocal dict+=~/.vim/dict/css.dict
-au FileType c setlocal dict+=~/.vim/dict/c.dict
-au FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
-au FileType scale setlocal dict+=~/.vim/dict/scale.dict
-au FileType javascript setlocal dict+=~/.vim/dict/javascript.dict
-
-
 set nobackup
 set nowritebackup
 set noswapfile
+set tags=~/tags
