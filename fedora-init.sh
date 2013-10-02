@@ -6,18 +6,9 @@ set -u
 
 
 #essential tools
-sudo yum -y install vim
-sudo yum -y install wget
-sudo yum -y install make
-sudo yum -y install gcc gcc-c++
-sudo yum -y install autoconf
-sudo yum -y install yum-fastestmirror
-sudo yum -y install git
-
+sudo yum -y install vim wget make gcc gcc-c++ autoconf yum-fastestmirror
 #install rpmfusion
 su -c 'yum localinstall --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'   
-#update
-sudo yum -y update
 #install chromium
 cd /etc/yum.repos.d/
 sudo wget http://repos.fedorapeople.org/repos/spot/chromium/fedora-chromium-stable.repo
@@ -31,26 +22,11 @@ sudo rm -f /etc/yum.repos.d/adobe-linux-x86_64.repo
 #office
 sudo yum -y groupinstall "Office/Productivity"
 #some useful tools
-sudo yum -y install httpd
-sudo yum -y install telnet
-sudo yum -y install davfs2
-sudo yum -y install svn
-sudo yum -y install compress
-sudo yum -y install strace
-sudo yum -y install ffmpeg
-sudo yum -y install rdesktop
-sudo yum -y install cdrecord
-sudo yum -y install dos2unix
+sudo yum -y install httpd telnet davfs2 compress svn git strace ffpeg rdesktop cdrecord dos2unix
 #needed for mounting exfat
-sudo yum -y install scons
-sudo yum -y install fuse-devel
+sudo yum -y install scons fuse-devel
 #network tools 
-sudo yum -y install dstat
-sudo yum -y install bridge-utils
-sudo yum -y install tunctl
-sudo yum -y install lynx
-
-
+sudo yum -y install dstat bridge-utils tunctl lynx
 ###############aliedit############################
 if [ -f "aliedit.tar.gz" ] ; then
 	echo package exists
@@ -66,5 +42,9 @@ else
 fi
 su $LOGNAME "./aliedit.sh"
 rm -rf aliedit*
-
+####################git repo######################
 ##################################################
+
+#update
+sudo yum -y update
+
