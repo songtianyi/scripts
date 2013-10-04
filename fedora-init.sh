@@ -23,10 +23,15 @@ sudo rm -f /etc/yum.repos.d/adobe-linux-x86_64.repo
 sudo yum -y groupinstall "Office/Productivity"
 #some useful tools
 sudo yum -y install httpd telnet davfs2 compress svn git strace ffpeg rdesktop cdrecord dos2unix
-#needed for mounting exfat
-sudo yum -y install scons fuse-devel
 #network tools 
 sudo yum -y install dstat bridge-utils tunctl lynx
+#################exfat############################
+sudo yum -y install scons fuse-devel svn
+sudo svn co http://exfat.googlecode.com/svn/trunk/ exfat-read-only
+cd exfat-read-only
+sudo scons install
+cd ..
+sudo rm -rf exfat-read-only
 ###############aliedit############################
 if [ -f "aliedit.tar.gz" ] ; then
 	echo package exists
