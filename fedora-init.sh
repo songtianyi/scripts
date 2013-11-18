@@ -1,28 +1,33 @@
 #!/bin/sh 
-set -e
 set -u
+#set -e
 
 #author songtianyi630@163.com
 
 
+#install rpmfusion
+su -c 'yum -y localinstall --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'   
 #essential tools
 sudo yum -y install vim wget make gcc gcc-c++ autoconf yum-fastestmirror
-#install rpmfusion
-su -c 'yum localinstall --nogpgcheck http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm'   
 #install chromium
 cd /etc/yum.repos.d/
 sudo wget http://repos.fedorapeople.org/repos/spot/chromium/fedora-chromium-stable.repo
 sudo yum -y install chromium
-sudo rm -f /etc/yum.repos.d/fedora-chromium-stable.repo
+sudo rm -f /etc/yum.repos.d/fedora-chromium-stable.repo*
 #install adobe flash
-sudo yum install http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm -y
-sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
-sudo yum install flash-plugin -y
-sudo rm -f /etc/yum.repos.d/adobe-linux-x86_64.repo
+if [ `getconf LONG_BIT` -eq 64 ];then
+	echo 64
+	sudo yum install http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm -y
+	sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+	sudo yum install flash-plugin -y
+	sudo rm -f /etc/yum.repos.d/adobe-linux-x86_64.repo*
+else
+	echo 32
+fi
 #office
 sudo yum -y groupinstall "Office/Productivity"
 #some useful tools
-sudo yum -y install httpd telnet davfs2 compress svn git strace ffpeg rdesktop cdrecord dos2unix
+sudo yum -y install httpd telnet davfs2 compress svn git strace ffpeg rdesktop cdrecord dos2unix vnc sshpass transmission
 #network tools 
 sudo yum -y install dstat bridge-utils tunctl lynx
 #################exfat############################
@@ -48,6 +53,26 @@ fi
 su $LOGNAME "./aliedit.sh"
 rm -rf aliedit*
 ####################git repo######################
+
+
+#####################Programming##################
+#libvirt
+sudo yum -y install libvirt libvirt-devel
+######################ssh########################
+cd /home/$LOGNAME
+if [ ! -d bin ]:then
+	mkdir bin
+fi
+echo '#!/bin/sh' >> /home/$LOGNAME/bin/go
+echo 'if [ $# != 1 ];then' >> /home/$LOGNAME/bin/go
+echo '    echo usage:$0 [parameter]' >> /home/$LOGNAME/bin/go
+echo 'fi' >> /home/$LOGNAME/bin/go
+echo 'case $1 in' >> /home/$LOGNAME/bin/go
+echo '"vm3")' >> /home/$LOGNAME/bin/go
+echo "    sshpass -p songtianyi ssh songtianyi@192.168.8.153" >> /home/$LOGNAME/bin/go
+echo ';;' >> /home/$LOGNAME/bin/go
+echo 'esac' >> /home/$LOGNAME/bin/go
+chmod +x /home/$LOGNAME/bin/go
 ##################################################
 
 #update

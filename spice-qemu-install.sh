@@ -92,14 +92,6 @@ awk '!a[$0]++' /etc/ld.so.conf > /etc/ld.so.conf.tmp
 sudo mv -f /etc/ld.so.conf.tmp /etc/ld.so.conf
 sudo ldconfig
 
-#check dir
-if [  -d /usr/local/lib/pkgconfig -a -d /usr/lib64/pkgconfig -a /usr/local/share/pkgconfig ]; then
-	echo check dir....yes
-else
-	echo check /usr/local/lib/pkgconfig /usr/lib64/pkgconfig /usr/local/share/pkgconfig failed!
-	exit 1
-fi
-
 SUFFIX="-install-dir"
 count=0
 

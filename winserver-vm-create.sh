@@ -1,5 +1,5 @@
 #!/bin/sh
-echo windows镜像制作脚本
+echo windows server 镜像制作脚本
 echo [script] 1 \#安装Windows操作系统
 echo [script] 2 \#安装驱动
 if [ $1 -eq 1 ]; then
@@ -9,6 +9,9 @@ if [ $1 -eq 1 ]; then
 	echo 用vncviewer连接虚拟机，安装操作系统，设置管理员密码为ucloud.cn, 关闭虚拟机
 
 else if [ $1 -eq 2 ]; then
+	#创建一个img，辅助virtio的安装
+	qemu-img create -f qcow2 fake.img 1G
+
 	#下载virtio驱动和powershell
 	power=wget http://download.microsoft.com/download/F/9/E/F9EF6ACB-2BA8-4845-9C10-85FC4A69B207/Windows6.0-KB968930-x86.msu
 	url=http://alt.fedoraproject.org/pub/alt/virtio-win/stable/virtio-win-0.1-52.iso

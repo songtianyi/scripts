@@ -15,4 +15,4 @@ this repo offers you convenience to do your manual work elegantly
 + **ss5-install.sh** socket server 5 installation script
 + **remote-viewer-deps.sh** install spice-gtk
 + **vimrc.txt** backup my vim config file 
-+ **winserver-vm.sh" create a windows server vm
++ **winserver-vm-create.sh** create a windows server vm
