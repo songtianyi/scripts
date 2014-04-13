@@ -13,7 +13,7 @@ else if [ $1 -eq 2 ]; then
 	qemu-img create -f qcow2 fake.img 1G
 
 	#下载virtio驱动和powershell
-	power=wget http://download.microsoft.com/download/F/9/E/F9EF6ACB-2BA8-4845-9C10-85FC4A69B207/Windows6.0-KB968930-x86.msu
+	power=http://download.microsoft.com/download/F/9/E/F9EF6ACB-2BA8-4845-9C10-85FC4A69B207/Windows6.0-KB968930-x86.msu
 	url=http://alt.fedoraproject.org/pub/alt/virtio-win/stable/virtio-win-0.1-52.iso
 	virtio=${url##*/}
 	powershell=${power##*/}

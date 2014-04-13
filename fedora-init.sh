@@ -28,6 +28,7 @@ fi
 sudo yum -y groupinstall "Office/Productivity"
 #some useful tools
 sudo yum -y install httpd telnet davfs2 compress svn git strace ffpeg rdesktop cdrecord dos2unix vnc sshpass transmission
+sudo yum -y install thunderbird
 #network tools 
 sudo yum -y install dstat bridge-utils tunctl lynx
 #################exfat############################
@@ -76,5 +77,5 @@ chmod +x /home/$LOGNAME/bin/go
 ##################################################
 
 #update
-sudo yum -y update
+#sudo yum -y update
 
