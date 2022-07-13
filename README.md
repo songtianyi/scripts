@@ -1,6 +1,6 @@
 this repo offers you convenience to do your manual work elegantly
 
-#*Catlog*
+# *Catalog*
 + **blog-template.html** blog article template in html format 
 + **blog-template-blank.html** blog article template in html format(no article)
 + **fedora-init.sh** it is uesful when you reinstall your fedora system
